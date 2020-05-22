@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Volejbal</title>
 	<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
+
+		.header {
+			width: 100%;
+			padding: 30px;
+			text-align: center;
+			font-size: 50px;
+			font-family: "Lucida Grande";
+			color: #000000;
+		}
+
 		.responsive {
 			width: 100%;
 			height: auto;
@@ -33,6 +44,7 @@
 			color: black;
 		}
 
+
 		</style>
 <?php 
 foreach($css_files as $file): ?>
@@ -40,6 +52,7 @@ foreach($css_files as $file): ?>
 <?php endforeach; ?>
 </head>
 <body>
+
 <img src="<?php echo base_url('images/vrch.jpg'); ?>" class="responsive"/>
 			<br>
 	<div class = "topnav">
@@ -60,6 +73,12 @@ foreach($css_files as $file): ?>
 		-->
 		
 	</div>
+<div class="header">Volejbal na Slovensku.</div>
+
+	<center><a href="http://www.svf.sk/sk/titulna-stranka">
+		<img src="<?php echo base_url('images/svf.png');?>" />
+		</a></center>
+
 	<div style='height:20px;'></div>  
     <div style="padding: 10px">
 		<?php echo $output; ?>
@@ -67,5 +86,15 @@ foreach($css_files as $file): ?>
     <?php foreach($js_files as $file): ?>
         <script src="<?php echo $file; ?>"></script>
     <?php endforeach; ?>
+<address>
+	<b>
+		<div align="right"style="color:black">
+			Created by <a href="mailto:ivanveselka@gmail.com">Ivan Veselka</a>.<br>
+			Adress: Šurany<br>
+			94201 <br>
+			Slovakia
+		</div>
+	</b>
+</address>
 </body>
 </html>

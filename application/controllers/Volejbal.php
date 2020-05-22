@@ -117,6 +117,7 @@ class Volejbal extends CI_Controller {
 		$crud->required_fields('meno','priezvisko','rok_narodenia','cislo_registracie');
 		$crud->set_relation('tim_id','tim','nazov');
 		$crud->display_as('tim_id','Aktuálny klub');
+		$crud->set_field_upload('foto','assets/uploads/files');
 		$crud->set_subject('Hraci');
 
 
