@@ -9457,7 +9457,7 @@
 		 *         <li>'&lt;"#id" and '&gt;' - div with an ID</li>
 		 *       </ul>
 		 *     </li>
-		 *     <li>Examples:
+		 *     <li>Volejbal:
 		 *       <ul>
 		 *         <li>'&lt;"wrapper"flipt&gt;'</li>
 		 *         <li>'&lt;lf&lt;t&gt;ip&gt;'</li>

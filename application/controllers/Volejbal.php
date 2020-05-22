@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Examples extends CI_Controller {
+class Volejbal extends CI_Controller {
 
 	public function __construct()
 	{
@@ -14,7 +14,7 @@ class Examples extends CI_Controller {
 
 	public function _example_output($output = null)
 	{
-		$this->load->view('example.php',(array)$output);
+		$this->load->view('Volejbal.php',(array)$output);
 	}
 
 	public function offices()
@@ -28,17 +28,17 @@ class Examples extends CI_Controller {
 	{
 		$this->_example_output((object)array('output' => '' , 'js_files' => array() , 'css_files' => array()));
 	}
-
-	public function offices_management()
+	public function mesto_management()
 	{
 		try{
 			$crud = new grocery_CRUD();
 
 			$crud->set_theme('tablestrap');
-			$crud->set_table('offices');
-			$crud->set_subject('Office');
-			$crud->required_fields('city');
-			$crud->columns('city','country','phone','addressLine1','postalCode');
+			$crud->set_table('mesto');
+			$crud->set_subject('Mesto');
+			$crud->required_fields('nazov');
+			$crud->columns('nazov');
+			$crud->unset_delete();
 
 			$output = $crud->render();
 
@@ -51,23 +51,21 @@ class Examples extends CI_Controller {
 
 	public function hala_management()
 	{
-		try{
-			$crud = new grocery_CRUD();
+		$crud = new grocery_CRUD();
 
-			$crud->set_theme('tablestrap');
-			$crud->set_table('hala');
-			$crud->set_subject('Haly');
-			$crud->required_fields('nazov','mesto');
-			$crud->columns('nazov','mesto');
+		$crud->set_theme('tablestrap');
+		$crud->set_table('hala');
+		$crud->required_fields('nazov','mesto');
+		$crud->set_relation('mestoid','mesto','nazov');
+		$crud->display_as('mestoid','Mesto');
+		$crud->set_subject('Športové Haly');
 
-			$output = $crud->render();
 
-			$this->_example_output($output);
+		$output = $crud->render();
 
-		}catch(Exception $e){
-			show_error($e->getMessage().' --- '.$e->getTraceAsString());
-		}
+		$this->_example_output($output);
 	}
+
 
 	public function liga_management()
 	{
@@ -79,6 +77,8 @@ class Examples extends CI_Controller {
 			$crud->set_subject('Ligy');
 			$crud->required_fields('nazov');
 			$crud->columns('nazov');
+			$crud->unset_add();
+			$crud->unset_delete();
 
 			$output = $crud->render();
 
@@ -89,7 +89,7 @@ class Examples extends CI_Controller {
 		}
 	}
 
-	public function tim2_management()
+	public function tim_management()
 	{
 		$crud = new grocery_CRUD();
 
@@ -114,7 +114,7 @@ class Examples extends CI_Controller {
 
 		$crud->set_theme('tablestrap');
 		$crud->set_table('hrac');
-		$crud->required_fields('meno','priezvisko','rok_narodenia','klubid');
+		$crud->required_fields('meno','priezvisko','rok_narodenia','cislo_registracie');
 		$crud->set_relation('tim_id','tim','nazov');
 		$crud->display_as('tim_id','Aktuálny klub');
 		$crud->set_subject('Hraci');
@@ -123,6 +123,26 @@ class Examples extends CI_Controller {
 		$output = $crud->render();
 
 		$this->_example_output($output);
+	}
+
+	public function offices_management()
+	{
+		try{
+			$crud = new grocery_CRUD();
+
+			$crud->set_theme('tablestrap');
+			$crud->set_table('offices');
+			$crud->set_subject('Office');
+			$crud->required_fields('city');
+			$crud->columns('city','country','phone','addressLine1','postalCode');
+
+			$output = $crud->render();
+
+			$this->_example_output($output);
+
+		}catch(Exception $e){
+			show_error($e->getMessage().' --- '.$e->getTraceAsString());
+		}
 	}
 
 	public function employees_management()
